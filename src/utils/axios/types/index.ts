@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-25 16:29:28
+ * @LastEditTime: 2022-07-25 17:42:18
  */
 export type Method =
   | "get"
@@ -84,6 +84,10 @@ export interface AxiosInstance extends Axios {
   <T>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
 }
 
+// 扩展  axios 静态实例
+export interface AxiosStatic extends AxiosInstance {
+  create(config?: AxiosRequestConfig): AxiosInstance;
+}
 // 拦截器
 export interface AxiosInterceptorManager<T> {
   use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number;
