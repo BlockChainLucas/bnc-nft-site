@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-13 18:10:45
+ * @LastEditTime: 2022-07-25 16:29:28
  */
 export type Method =
   | "get"
@@ -29,6 +29,8 @@ export interface AxiosRequestConfig {
   headers?: any;
   responseType?: XMLHttpRequestResponseType;
   timeout?: number;
+  transformRequest?: AxiosTransformer | AxiosTransformer[];
+  transformResponse?: AxiosTransformer | AxiosTransformer[];
   [propName: string]: any;
 }
 
@@ -94,4 +96,8 @@ export interface ResolvedFn<T = any> {
 
 export interface RejectedFn {
   (error: any): any;
+}
+
+export interface AxiosTransformer {
+  (data: any, headers?: any): any;
 }

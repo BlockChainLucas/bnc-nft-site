@@ -4,8 +4,9 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-07 17:56:38
  * @LastEditors: captern
- * @LastEditTime: 2022-07-13 19:40:36
+ * @LastEditTime: 2022-07-25 16:41:33
  */
+import qs from "qs";
 import React from "react";
 import "./App.css";
 import axios, { AxiosError, AxiosResponse } from "./utils/axios";
@@ -106,6 +107,28 @@ const App: React.FC = () => {
   // name();
 
   const array = new Int32Array([21, 22]);
+  axios({
+    transformRequest: [
+      (data, headers) => {
+        console.log(data, headers);
+        return qs.stringify(data);
+        return data;
+      },
+    ],
+    url: baseUrl + "/post",
+    headers: {
+      Accept: "text/plain",
+      test: "",
+    },
+    method: "post",
+    data: {
+      a: 1,
+      b: 2,
+    },
+  }).then((res: AxiosResponse) => {
+    console.log("resres:", res);
+  });
+
   const getRequrst4 = axios({
     url: baseUrl + "/post",
     headers: {

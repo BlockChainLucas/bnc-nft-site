@@ -4,13 +4,14 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 17:28:11
  * @LastEditors: captern
- * @LastEditTime: 2022-07-13 19:27:59
+ * @LastEditTime: 2022-07-25 16:36:21
  */
 import xhr from "./xhr";
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { buildURL } from "../helpers/url";
 import { transformRequest, transformResponse } from "../helpers/data";
 import { flattenHeaders, processHeaders } from "../helpers/header";
+import transform from "./transform";
 export default function dispatchRequest(
   config: AxiosRequestConfig
 ): AxiosPromise {
@@ -22,8 +23,9 @@ export default function dispatchRequest(
 
 const processConfig = (config: AxiosRequestConfig): void => {
   config.url = transformURL(config);
-  config.headers = transformHeader(config);
-  config.data = transformRequestDate(config);
+  // config.headers = transformHeader(config);
+  // config.data = transformRequestDate(config);
+  config.data = transform(config.data, config.headers, config.transformRequest);
   config.headers = flattenHeaders(config.headers, config.method!);
 };
 
@@ -32,15 +34,16 @@ const transformURL = (config: AxiosRequestConfig): string => {
   return buildURL(url!, params);
 };
 
-const transformRequestDate = (config: AxiosRequestConfig): any => {
-  return transformRequest(config.data);
-};
-const transformHeader = (config: AxiosRequestConfig): any => {
-  const { headers = {}, data } = config;
-  return processHeaders(headers, data);
-};
+// const transformRequestDate = (config: AxiosRequestConfig): any => {
+//   return transformRequest(config.data);
+// };
+// const transformHeader = (config: AxiosRequestConfig): any => {
+//   const { headers = {}, data } = config;
+//   return processHeaders(headers, data);
+// };
 
 const transformResponseData = (res: AxiosResponse): AxiosResponse => {
-  res.data = transformResponse(res.data);
+  // res.data = transformResponse(res.data);
+  res.data = transform(res.data, res.headers, res.config.transformResponse);
   return res;
 };
