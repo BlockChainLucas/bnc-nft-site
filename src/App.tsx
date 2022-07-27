@@ -4,11 +4,15 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-07 17:56:38
  * @LastEditors: captern
- * @LastEditTime: 2022-07-25 16:41:33
+ * @LastEditTime: 2022-07-26 13:32:51
  */
 import qs from "qs";
 import React from "react";
+
+import { Button } from "antd";
+import LayoutContainer from "./layout/Layout";
 import "./App.css";
+
 import axios, { AxiosError, AxiosResponse } from "./utils/axios";
 const baseUrl =
   "https://www.fastmock.site/mock/859d7dac3dffcae51487fb02ad0d2a8a/captern";
@@ -143,10 +147,10 @@ const App: React.FC = () => {
   }).then((res: AxiosResponse) => {
     console.log(res);
   });
+
   return (
     <div className="App">
-      {/* <button onClick={() => getRequrst}>+</button> */}
-      Demo
+      <LayoutContainer />
     </div>
   );
 };

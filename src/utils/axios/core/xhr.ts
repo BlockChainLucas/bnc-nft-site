@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:13:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-13 19:11:01
+ * @LastEditTime: 2022-07-26 17:57:35
  */
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { parseHeaders } from "../helpers/header";
@@ -18,6 +18,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       headers,
       responseType,
       timeout,
+      cancelToken,
     } = config;
     const request = new XMLHttpRequest();
     if (responseType) {
@@ -73,6 +74,13 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         request.setRequestHeader(name, headers[name]);
       }
     });
+
+    if (cancelToken) {
+      cancelToken.promise.then((reason) => {
+        request.abort();
+        reject(reason);
+      });
+    }
     request.send(data);
 
     const handleResponse = (response: AxiosResponse): void => {

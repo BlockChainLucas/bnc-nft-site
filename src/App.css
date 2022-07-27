@@ -1,18 +1,12 @@
-.App{
-  /* 阴影 */
+@import '~antd/dist/antd.css';
+/* .App{
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  /* 水平居中 */
   text-align: center;
-  /* 垂直居中 */
   vertical-align: middle;
-  /* 宽度 */
   width: 100%;
-  /* 高斯模糊 */
   filter: blur(1px);
-  /* 淡入淡出 */
   animation: fadein 0.5s;
 }
-/* 动画 */
 @keyframes fadein {
   from {
     opacity: 0;
@@ -20,4 +14,4 @@
   to {
     opacity: 1;
   }
-}
+} */
