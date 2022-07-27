@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:13:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-26 17:57:35
+ * @LastEditTime: 2022-07-27 15:28:04
  */
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { parseHeaders } from "../helpers/header";
@@ -19,6 +19,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       responseType,
       timeout,
       cancelToken,
+      withCredentials,
     } = config;
     const request = new XMLHttpRequest();
     if (responseType) {
@@ -27,6 +28,10 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     if (timeout) {
       request.timeout = timeout;
     }
+    if (withCredentials) {
+      request.withCredentials = withCredentials;
+    }
+
     request.open(method, url!, true);
     // 成功回调
     request.onreadystatechange = () => {
