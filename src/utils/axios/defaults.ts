@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-13 17:34:40
  * @LastEditors: captern
- * @LastEditTime: 2022-07-25 16:33:01
+ * @LastEditTime: 2022-07-27 16:02:12
  */
 import { AxiosRequestConfig } from "./types";
 import { processHeaders } from "./helpers/header";
@@ -18,6 +18,8 @@ const defaults: AxiosRequestConfig = {
       Accept: "application/json, text/plain, */*",
     },
   },
+  xsrfCookieName: "XSRF-TOKEN",
+  xsrfHeaderName: "X-XSRF-TOKEN",
   transformRequest: [
     function (data, headers) {
       processHeaders(headers, data);

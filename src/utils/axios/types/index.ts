@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 15:20:20
+ * @LastEditTime: 2022-07-27 15:49:58
  */
 export type Method =
   | "get"
@@ -33,6 +33,8 @@ export interface AxiosRequestConfig {
   transformResponse?: AxiosTransformer | AxiosTransformer[];
   cancelToken?: CancelToken;
   withCredentials?: boolean;
+  xsrfCookieName?: string;
+  xsrfHeaderName?: string;
   [propName: string]: any;
 }
 

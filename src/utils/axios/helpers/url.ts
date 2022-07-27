@@ -4,10 +4,13 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 13:42:45
  * @LastEditors: captern
- * @LastEditTime: 2022-07-11 14:22:15
+ * @LastEditTime: 2022-07-27 16:10:02
  */
 import { isDate, isPlainObject } from "./utils";
-
+interface URLOrigin {
+  protocol: string;
+  host: string;
+}
 const encode = (val: string): string => {
   return encodeURIComponent(val)
     .replace(/%40/g, "@")
@@ -55,3 +58,23 @@ export const buildURL = (url: string, params?: any): string => {
   }
   return url;
 };
+
+export function isURLSameOrigin(requestURL: string): boolean {
+  const parsedOrigin = resolveURL(requestURL);
+  return (
+    parsedOrigin.protocol === currentOrigin.protocol &&
+    parsedOrigin.host === currentOrigin.host
+  );
+}
+
+const urlParsingNode = document.createElement("a");
+const currentOrigin = resolveURL(window.location.href);
+
+function resolveURL(url: string): URLOrigin {
+  urlParsingNode.setAttribute("href", url);
+  const { protocol, host } = urlParsingNode;
+  return {
+    protocol,
+    host,
+  };
+}

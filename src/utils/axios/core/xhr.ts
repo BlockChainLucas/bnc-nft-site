@@ -4,11 +4,13 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:13:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 15:28:04
+ * @LastEditTime: 2022-07-27 16:21:49
  */
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { parseHeaders } from "../helpers/header";
 import { createError } from "../helpers/error";
+import { isURLSameOrigin } from "../helpers/url";
+import cookie from "../helpers/cookie";
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
     const {
@@ -20,6 +22,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       timeout,
       cancelToken,
       withCredentials,
+      xsrfCookieName,
+      xsrfHeaderName,
     } = config;
     const request = new XMLHttpRequest();
     if (responseType) {
@@ -70,6 +74,13 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         )
       );
     };
+    // 处理 xsrfCookieName 和 xsrfHeaderName
+    if ((withCredentials || isURLSameOrigin(url!)) && xsrfCookieName) {
+      const xsrfValue = cookie.read(xsrfCookieName);
+      if (xsrfValue && xsrfHeaderName) {
+        headers[xsrfHeaderName] = xsrfValue;
+      }
+    }
     Object.keys(headers).forEach((name: string) => {
       if (data === null && name.toLowerCase() === "content-type") {
         delete headers[name];
