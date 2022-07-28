@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:13:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 16:49:25
+ * @LastEditTime: 2022-07-28 11:02:44
  */
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { parseHeaders } from "../helpers/header";
@@ -27,6 +27,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       xsrfHeaderName,
       onDownloadProgress,
       onUploadProgress,
+      auth,
     } = config;
     const request = new XMLHttpRequest();
 
@@ -110,6 +111,10 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         if (xsrfValue && xsrfHeaderName) {
           headers[xsrfHeaderName] = xsrfValue;
         }
+      }
+      if (auth) {
+        headers["Authorization"] =
+          "Basic " + btoa(auth.username + ":" + auth.password);
       }
       Object.keys(headers).forEach((name: string) => {
         if (data === null && name.toLowerCase() === "content-type") {
