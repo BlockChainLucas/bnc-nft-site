@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 17:28:11
  * @LastEditors: captern
- * @LastEditTime: 2022-07-28 13:28:01
+ * @LastEditTime: 2022-07-28 13:50:37
  */
 import xhr from "./xhr";
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
@@ -30,7 +30,7 @@ const processConfig = (config: AxiosRequestConfig): void => {
   config.headers = flattenHeaders(config.headers, config.method!);
 };
 
-const transformURL = (config: AxiosRequestConfig): string => {
+export const transformURL = (config: AxiosRequestConfig): string => {
   let { url, params, paramsSerializer, baseUrl } = config;
   if (baseUrl && !isAbsoluteURL(url!)) {
     url = combineURL(baseUrl, url);

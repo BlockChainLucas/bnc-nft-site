@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 16:40:14
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 14:52:42
+ * @LastEditTime: 2022-07-28 13:48:35
  */
 import { AxiosRequestConfig, AxiosStatic } from "./types";
 import { extend } from "./helpers/utils";
@@ -30,4 +30,14 @@ axios.create = function create(config) {
 axios.CancelToken = CancelToken;
 axios.Cancel = Cancel;
 axios.isCancel = isCancel;
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+axios.Axios = Axios;
 export default axios;

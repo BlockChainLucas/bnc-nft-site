@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-28 13:23:39
+ * @LastEditTime: 2022-07-28 13:35:59
  */
 export type Method =
   | "get"
@@ -86,6 +86,7 @@ export interface Axios {
     data?: any,
     config?: AxiosRequestConfig
   ): AxiosPromise<T>;
+  getUri(config: AxiosRequestConfig): string;
 }
 
 export interface AxiosInstance extends Axios {
@@ -94,12 +95,19 @@ export interface AxiosInstance extends Axios {
   <T>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>;
 }
 
+export interface AxiosClassStatic {
+  new (config: AxiosRequestConfig): Axios;
+}
+
 // 扩展  axios 静态实例
 export interface AxiosStatic extends AxiosInstance {
   create(config?: AxiosRequestConfig): AxiosInstance;
   CancelToken: CancelTokenStatic;
   Cancel: CancelStatic;
   isCancel: (value: any) => boolean;
+  all<T>(promise: Array<T | Promise<T>>): Promise<T[]>;
+  spread<T, R>(callback: (...args: T[]) => R): (arr: T[]) => R;
+  Axios: AxiosClassStatic;
 }
 // 拦截器
 export interface AxiosInterceptorManager<T> {
