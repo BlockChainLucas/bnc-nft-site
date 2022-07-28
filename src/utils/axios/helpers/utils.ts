@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 13:46:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 16:38:01
+ * @LastEditTime: 2022-07-28 11:19:41
  */
 const toString = Object.prototype.toString;
 export const isDate = (val: any): val is Date => {
@@ -32,6 +32,10 @@ export function extend<T, U>(to: T, from: U): T & U {
 
 export function isFormData(val: any): val is FormData {
   return typeof val !== "undefined" && val instanceof FormData;
+}
+
+export function isURLSearchParams(val: any): val is URLSearchParams {
+  return typeof val !== "undefined" && val instanceof URLSearchParams;
 }
 
 export function deepMerge(...objs: any[]): any {

@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 17:28:11
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 15:08:10
+ * @LastEditTime: 2022-07-28 11:24:58
  */
 import xhr from "./xhr";
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
@@ -31,8 +31,8 @@ const processConfig = (config: AxiosRequestConfig): void => {
 };
 
 const transformURL = (config: AxiosRequestConfig): string => {
-  const { url, params } = config;
-  return buildURL(url!, params);
+  const { url, params, paramsSerializer } = config;
+  return buildURL(url!, params, paramsSerializer);
 };
 
 // const transformRequestDate = (config: AxiosRequestConfig): any => {

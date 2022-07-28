@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-28 11:08:37
+ * @LastEditTime: 2022-07-28 11:15:30
  */
 export type Method =
   | "get"
@@ -39,6 +39,7 @@ export interface AxiosRequestConfig {
   onUploadProgress?: (e: ProgressEvent) => void;
   auth?: AxiosBasicCredentials;
   validateStatus?: (status: number) => boolean;
+  paramsSerializer?: (params: any) => string;
   [propName: string]: any;
 }
 
