@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:05:16
  * @LastEditors: captern
- * @LastEditTime: 2022-07-27 15:49:58
+ * @LastEditTime: 2022-07-27 16:33:38
  */
 export type Method =
   | "get"
@@ -35,6 +35,8 @@ export interface AxiosRequestConfig {
   withCredentials?: boolean;
   xsrfCookieName?: string;
   xsrfHeaderName?: string;
+  onDownloadProgress?: (e: ProgressEvent) => void;
+  onUploadProgress?: (e: ProgressEvent) => void;
   [propName: string]: any;
 }
 
