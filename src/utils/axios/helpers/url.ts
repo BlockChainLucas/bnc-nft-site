@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 13:42:45
  * @LastEditors: captern
- * @LastEditTime: 2022-07-28 11:18:12
+ * @LastEditTime: 2022-07-28 13:25:24
  */
 import { isDate, isPlainObject, isURLSearchParams } from "./utils";
 interface URLOrigin {
@@ -69,6 +69,16 @@ export const buildURL = (
   }
   return url;
 };
+
+export function isAbsoluteURL(url: string): boolean {
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+}
+
+export function combineURL(baseURL: string, relativeURL?: string): string {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, "") + "/" + relativeURL.replace(/^\/+/, "")
+    : baseURL;
+}
 
 export function isURLSameOrigin(requestURL: string): boolean {
   const parsedOrigin = resolveURL(requestURL);
