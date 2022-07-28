@@ -4,7 +4,7 @@
  * @Author: captern@icloud.com
  * @Date: 2022-07-11 10:13:42
  * @LastEditors: captern
- * @LastEditTime: 2022-07-28 11:02:44
+ * @LastEditTime: 2022-07-28 11:10:23
  */
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from "../types";
 import { parseHeaders } from "../helpers/header";
@@ -27,6 +27,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       xsrfHeaderName,
       onDownloadProgress,
       onUploadProgress,
+      validateStatus,
       auth,
     } = config;
     const request = new XMLHttpRequest();
@@ -137,7 +138,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     }
 
     function handleResponse(response: AxiosResponse): void {
-      if (response.status >= 200 && response.status < 300) {
+      // if (response.status >= 200 && response.status < 300) {
+      if (!validateStatus || validateStatus(response.status)) {
         resolve(response);
       } else {
         reject(
