@@ -1,0 +1,59 @@
+.faqs-container{
+  background: #060514;
+  .container-main{
+    .title{
+      .biaoti{
+        width: 126px;
+        height: 84px;
+        margin-top: 200px;
+      }
+    }
+    .desc{
+      margin-top: 86px;
+      .item{
+        margin-bottom: 40px;
+        .title-area{
+          width: 1200px;
+          height: 96px;
+          border: 0.5px solid rgba(151,151,151,0.8);
+          display: flex;
+          align-items: center;
+          .item-key{
+            width: 126px;
+            text-align: center;
+            font-family: DINCondensed-Bold;
+            font-size: 42px;
+            color: #FFFFFF;
+            height: 96px;
+            line-height: 106px;
+          }
+          .item-title{
+            flex: 1;
+            font-family: DINCondensed-Bold;
+            font-size: 22px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+          }
+          .item-icon{
+            width: 100px;
+            img{
+              width: 36x;
+              height: 36px;
+            }
+          }
+        }
+        .item-desc{
+          opacity: 0.7;
+          font-family: DINCondensed-Bold;
+          font-size: 25px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: center;
+          line-height: 40px;
+          font-weight: 700;
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}

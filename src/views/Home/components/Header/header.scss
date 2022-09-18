@@ -1,0 +1,96 @@
+.header-container{
+  font-family: DINCondensed-Bold;
+  height: 120px;
+  line-height: 120px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(8,5,20,0.6);
+  .header-main{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    .header-left{
+      .logo{
+        width: 36px;
+        height: 36px;
+        margin-right: 16px
+      }
+      font-family: DINCondensed-Bold;
+      font-size: 35px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: center;
+      font-weight: 700;
+      margin-right: 87px;
+    }
+    .header-center{
+      display: flex;
+      overflow: hidden;
+      .ant-anchor{
+        display: flex;
+        height: 120px;
+        line-height: 120px;
+        overflow: hidden;
+        .ant-anchor-ink{
+          display: none;
+        }
+        .ant-anchor-link{
+          padding: 0 30px;
+          .ant-anchor-link-title{
+            opacity: 0.6;
+            font-size: 25px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+            font-weight: 700;
+          }
+          &.ant-anchor-link-active{
+            .ant-anchor-link-title-active{
+              opacity: 1;
+              &::after{
+                position: relative;
+                top: -37px;
+                display: block;
+                width: 46px;
+                height: 3px;
+                margin: 0 auto;
+                background: #7C5BFF;
+                content: ' ';
+              }
+            }
+          }
+        }
+      }
+    }
+    .header-right{
+      width: 199px;
+      height: 64px;
+      line-height: 64px;
+      margin:  auto;
+      background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
+      border-radius: 32px;
+      // 文字
+      font-size: 25px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: center;
+      font-weight: 700;
+      margin-left: 80px;
+      cursor: pointer;
+      &.login{
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 32px;
+        font-family: DINCondensed-Bold;
+        font-size: 25px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        text-align: center;
+        font-weight: 700;
+        background: none;
+        overflow: hidden;
+        font-weight: normal;
+      }
+    }
+  }
+}

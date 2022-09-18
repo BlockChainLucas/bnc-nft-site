@@ -1,0 +1,24 @@
+.footer-container{
+  height: 200px;
+  background: #060514;
+  .links{
+    width: 788px;
+    margin: 0 auto;
+    display: flex;
+    .link-item{
+      text-align: center;
+      height: 200px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: DINCondensed-Bold;
+      font-size: 25px;
+      color: #FFFFFF;
+      letter-spacing: 0;
+      text-align: justify;
+      font-weight: 700;
+    }
+  }
+}

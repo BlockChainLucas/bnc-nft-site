@@ -1,0 +1,129 @@
+.mint-container{
+  background: #060514;
+  .container-main{
+    .title{
+      .biaoti{
+        width: 248px;
+        height: 84px;
+        margin-top: 170px;
+      }
+    }
+    .desc{
+      margin-top: 86px;
+      .mint-list{
+        display: flex;
+        .mint-item{
+          position: relative;
+          .mint-item-img{
+            border: 5px solid rgba(0,0,0,0);
+            padding: 2px;
+            cursor: pointer;
+            .mint-item-title{
+              position: absolute;
+              width: calc(100% - 14px);
+              height: calc(100% - 14px);
+              top: 0;
+              font-family: DINCondensed-Bold;
+              font-size: 56px;
+              color: #FFFFFF;
+              letter-spacing: 0;
+              text-align: center;
+              font-weight: 700;
+              vertical-align: middle;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+          &.mint-item-check{
+            .mint-item-img{
+              border: 5px solid rgba(124,91,255,1);
+              border-radius: 6px;
+            }
+            .checked-line{
+              height: 4px;
+              background: #7C5BFF;
+              position: absolute;
+              width: calc(100% - 24px);
+              left: 12px;
+              top: calc(100% - 3px);
+            }
+          }
+          .check-line{
+            height: 2px;
+            margin-top: 18px;
+            background: rgba(255,255,255,0.30);
+          }
+          &:first-child{
+            .check-line{
+              margin-left: 24px;
+            }
+          }
+          &:first-child, &:last-child{
+            .check-line{
+              width: calc(100% - 24px);
+            }
+          }
+        }
+      }
+      // 点击链接区域
+      .mint-now{
+        display: flex;
+        .mint-now-left{
+          margin-top: 30px;
+          flex: 2;
+          .amount-title{
+            font-family: DINCondensed-Bold;
+            font-size: 25px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+            font-weight: 700;
+          }
+          .mint-amount{
+            font-family: DINCondensed-Bold;
+            font-size: 72px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+            font-weight: 700;
+          }
+          .mint-button{
+            margin: 15px auto 0;
+            width: 288px;
+            height: 64px;
+            line-height: 64px;
+            background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
+            border-radius: 32px;
+            font-family: DINCondensed-Bold;
+            font-size: 25px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+            text-align: center;
+            font-weight: 700;
+            cursor: pointer;
+          }
+          .error{
+            font-family: DINCondensed-Bold;
+            font-size: 25px;
+            color: #FF4141;
+            letter-spacing: 0;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-top: 30px;
+          }
+        }
+        .mint-now-right{
+          flex: 1;
+          font-family: DINCondensed-Bold;
+          font-size: 25px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          line-height: 100px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

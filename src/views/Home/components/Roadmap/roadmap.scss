@@ -1,0 +1,54 @@
+.roadmap-container{
+  height: 1965px;
+  background: #060514;
+  .container-main{
+    .title{
+      .biaoti{
+        width: 445px;
+        height: 76px;
+        margin-top: 250px;
+      }
+    }
+    .desc{
+      margin-top: 80px;
+      &::before{
+        position: absolute;
+        left: 14px;
+        display: block;
+        width: 13px;
+        height: 1154px;
+        overflow: hidden;
+        margin-top: 85px;
+        content: url('../../../../assets/roadmap/roadmap_xian.png');
+      }
+      .desc-item{
+        display: flex;
+        align-items: center;
+        .item-key{
+          position: relative;
+          img{
+            width: 43px;
+            height: 44.27px;
+          }
+        }
+        .main{
+          width: 1087px;
+          border: 0.5px solid rgba(151,151,151,0.8);
+          margin: 20px 0 20px 70px;
+          padding: 22px 60px;
+          // 文字
+          font-family: DINCondensed-Bold;
+          font-size: 22px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: justify;
+          line-height: 36px;
+          font-weight: 700;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.modal-container-logout{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.40);
+  
+  .modal-area{
+    width: 650px;
+    height: 465px;
+    position: relative;
+    left: calc(50vw - 325px);
+    top: calc(50vh - 220px);
+    background: #FFFFFF;
+    border-radius: 10px;
+    .close-icon{
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    .modal-title{
+      font-family: DINCondensed-Bold;
+      font-size: 41px;
+      color: #121213;
+      letter-spacing: 0;
+      font-weight: 700;
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+    .modal-main{
+      width: 550px;
+      height: 130px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid rgba(236,236,236,1);
+      border-radius: 8px;
+      display: flex;
+      padding: 30px 22px;
+      .avatar-area{
+        width: 112px;
+        .avatar{
+          width: 70px;
+          height: 70px;
+        }
+      }
+      .msg-area{
+        flex: 1;
+        .username{
+          opacity: 0.5;
+          font-family: DINCondensed-Bold;
+          font-size: 20px;
+          color: #121213;
+          letter-spacing: 0;
+          font-weight: 700;
+        }
+        .desc{
+          font-family: DINCondensed-Bold;
+          font-size: 20px;
+          color: #121213;
+          letter-spacing: 0;
+          font-weight: 700;
+        }
+      }
+      .copy-area{
+        width: 56px;
+        img{
+          width: 32px;
+          height: 32px;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+    .modal-bottom {
+      text-align: center;
+      .io-link{
+        padding: 20px 0 30px 0 ;
+        font-family: DINCondensed-Bold;
+        font-size: 20px;
+        color: #9D3CFF;
+        letter-spacing: 0;
+        font-weight: 700;
+      }
+      .logout{
+        width: 228px;
+        height: 64px;
+        line-height: 64px;
+        margin: 0 auto;
+        background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
+        border-radius: 32px;
+        font-family: DINCondensed-Bold;
+        font-size: 25px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        text-align: center;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+}
