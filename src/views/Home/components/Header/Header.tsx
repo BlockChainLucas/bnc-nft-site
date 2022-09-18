@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Anchor } from "antd";
 import "./header.scss";
+import logo from "../../../../assets/modal/logo.png";
 import { setShowLoginoutModal } from "../../../../store/actions/user";
 const { Link } = Anchor;
 const Header: React.FC = (props: any) => {
@@ -18,7 +19,7 @@ const Header: React.FC = (props: any) => {
     <div className="header-container">
       <div className="header-main">
         <div className="header-left">
-          <img className="logo" src="" alt="" />
+          <img className="logo" src={logo} alt="" />
           BNC NFT
         </div>
         <div className="header-center">
