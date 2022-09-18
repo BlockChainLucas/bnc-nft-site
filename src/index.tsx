@@ -28,7 +28,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="bnc-test">
+      <BrowserRouter basename="/bnc-test">
         <App />
       </BrowserRouter>
     </PersistGate>
