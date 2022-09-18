@@ -22,6 +22,12 @@ const routes: Routes[] = [
     label: "首页",
     key: "home",
   },
+  // {
+  //   path: "/test/",
+  //   element: <Home />,
+  //   label: "首页",
+  //   key: "home",
+  // },
 ];
 
 export default routes;
