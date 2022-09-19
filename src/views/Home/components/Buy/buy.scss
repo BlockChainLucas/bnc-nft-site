@@ -12,16 +12,18 @@
     .desc{
       margin-top: 100px;
       .desc-main{
-        width: 1200px;
-        height: 308px;
+        height: 278px;
         border: 0.5px solid rgba(151,151,151,0.8);
         padding: 40px 80px;
-        display: flex;
-        align-items: center;
+        justify-content: center;
         .desc-item{
           display: flex;
+          box-sizing: border-box;
+          align-items: center;
+          justify-content: center;
           padding: 12px;
           .desc-item-num{
+            flex: 1.1;
             width: 60px;
             height: 30px;
             border-radius: 30px;
@@ -37,11 +39,11 @@
             margin-right: 20px;
           }
           .desc-item-text{
+            flex: 11;
             font-family: DINCondensed-Bold;
             font-size: $fontsize-20;
             color: #FFFFFF;
             letter-spacing: 0;
-            text-align: center;
             line-height: 40px;
             font-weight: 700;
           }
