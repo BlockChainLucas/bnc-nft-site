@@ -40,7 +40,7 @@ const Modal: React.FC = () => {
         <div className="modal-title">Connect a wallet</div>
         <div className="modal-main">
           <img className="avatar" src={icon_MrtaMask} alt="" />
-          <div className="username">MrtaMask</div>
+          <div className="username">Metamask</div>
           <div className="desc" onClick={getUserinfoFun}>
             Connect to your MetaMask Waller
           </div>
