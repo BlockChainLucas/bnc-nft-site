@@ -13,17 +13,17 @@ const faqsList = [
   {
     key: "02",
     title: "How do I stay safe",
-    desc: "Join the BNC community and participate in sharing",
+    desc: "woo, this is a very smart question with an unchanging answer: NO ONE from the core team will ever DM you! Stay vigilant and be on the alert for scammers. If you come across one, flag and report them to mods immediately!",
   },
   {
     key: "03",
-    title: "Can I mint more than one NFT",
-    desc: "Join the BNC community and participate in sharing",
+    title: "Can I mint mre than 1 NFT",
+    desc: "In principle, No but you can join us as a community volunteer or become a community partner",
   },
   {
     key: "04",
     title: "Can I resell NFT",
-    desc: "Join the BNC community and participate in sharing",
+    desc: "Sorry, resale is not available at the moment, we will open resale in one of the quarters of 2023",
   },
 ];
 const FAQS: React.FC = () => {

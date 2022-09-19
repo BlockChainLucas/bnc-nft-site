@@ -31,21 +31,23 @@ const Header: React.FC = (props: any) => {
             <Link href="#faqs" title="FAQS" />
           </Anchor>
         </div>
-        {userMsg?.key ? (
-          <div
-            className="header-right login"
-            onClick={() => dispatch(setShowLoginoutModal("logout"))}
-          >
-            {key}
-          </div>
-        ) : (
-          <div
-            className="header-right unlogin"
-            onClick={() => dispatch(setShowLoginoutModal("login"))}
-          >
-            Connect Wallet
-          </div>
-        )}
+        <div className="header-right-area">
+          {userMsg?.key ? (
+            <div
+              className="header-right login"
+              onClick={() => dispatch(setShowLoginoutModal("logout"))}
+            >
+              {key}
+            </div>
+          ) : (
+            <div
+              className="header-right unlogin"
+              onClick={() => dispatch(setShowLoginoutModal("login"))}
+            >
+              Connect Wallet
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

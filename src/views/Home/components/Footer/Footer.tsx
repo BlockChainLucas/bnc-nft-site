@@ -8,7 +8,7 @@ const FAQS: React.FC = () => {
       <div className="links">
         <div className="link-item">
           <img src={icon_discord} alt="" />
-          <span>Twitter</span>
+          <span>Discord</span>
         </div>
         <div className="link-item">
           <img src={icon_twitter} alt="" />
