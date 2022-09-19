@@ -7252,6 +7252,13 @@ postcss-pseudo-class-any-link@^7.1.5:
   dependencies:
     postcss-selector-parser "^6.0.10"
 
+postcss-px-to-viewport-8-plugin@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npmjs.org/postcss-px-to-viewport-8-plugin/-/postcss-px-to-viewport-8-plugin-1.1.5.tgz#e9aa4579781bdf6d1b6810c3bacb3b9cc16b9837"
+  integrity sha512-qM6x2NyGbRj8R15o/LCbw5hacU+XK1s80zTvWgLjHsOP8B9P1KbDZbNS11BG6/WPut8LR8DvEU5iKw8JnQn9MQ==
+  dependencies:
+    object-assign "^4.1.1"
+
 postcss-reduce-initial@^5.1.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/postcss-reduce-initial/-/postcss-reduce-initial-5.1.0.tgz#fc31659ea6e85c492fb2a7b545370c215822c5d6"

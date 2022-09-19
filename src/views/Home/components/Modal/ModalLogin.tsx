@@ -4,8 +4,8 @@ import {
   setUserMsg,
   setShowLoginoutModal,
 } from "../../../../store/actions/user";
-import icon_guanbi from "../../../../assets/modal/icon_guanbi.png";
-import icon_MrtaMask from "../../../../assets/modal/icon_MrtaMask.png";
+import icon_guanbi from "@assets/modal/icon_guanbi.png";
+import icon_MrtaMask from "@assets/modal/icon_MrtaMask.png";
 
 import "./modal.scss";
 import { getUserInfo } from "../../../../api/user";

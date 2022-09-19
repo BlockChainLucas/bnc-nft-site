@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import mint_bg from "../../../../assets/mint/mint_bg.png";
-import mint_biaoti from "../../../../assets/mint/mint_biaoti.png";
+import mint_bg from "@assets/mint/mint_bg.png";
+import mint_biaoti from "@assets/mint/mint_biaoti.png";
 import "./mint.scss";
 
 const mintList = [
@@ -63,7 +63,7 @@ const Roadmap: React.FC = () => {
                       }}
                     >
                       <img
-                        src={require(`../../../../assets/mint/${item.imgKey}.png`)}
+                        src={require(`@assets/mint/${item.imgKey}.png`)}
                         alt=""
                       />
                       <div className="mint-item-title">{item.title}</div>

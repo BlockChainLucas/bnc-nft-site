@@ -6,9 +6,9 @@ import {
   setUserLogout,
   setShowLoginoutModal,
 } from "../../../../store/actions/user";
-import icon_guanbi from "../../../../assets/modal/icon_guanbi.png";
-import icon_MrtaMask from "../../../../assets/modal/icon_MrtaMask.png";
-import icon_fuzhi from "../../../../assets/modal/icon_fuzhi.png";
+import icon_guanbi from "@assets/modal/icon_guanbi.png";
+import icon_MrtaMask from "@assets/modal/icon_MrtaMask.png";
+import icon_fuzhi from "@assets/modal/icon_fuzhi.png";
 
 import "./logout.scss";
 import { getUserInfo } from "../../../../api/user";

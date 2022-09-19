@@ -1,10 +1,11 @@
+@import '@style/var.scss';
 .buy-container{
   background: #060514;
   .container-main{
     .title{
       .biaoti{
-        width: 313px;
-        height: 84px;
+        width: $about-title-width;
+        height: $height-84;
         margin-top: 220px;
       }
     }
@@ -27,7 +28,7 @@
             background-color: #fff;
 
             font-family: DINCondensed-Bold;
-            font-size: 20px;
+            font-size: $fontsize-20;
             color: #7D5CFF;
             letter-spacing: 0;
             text-align: center;
@@ -37,7 +38,7 @@
           }
           .desc-item-text{
             font-family: DINCondensed-Bold;
-            font-size: 20px;
+            font-size: $fontsize-20;
             color: #FFFFFF;
             letter-spacing: 0;
             text-align: center;
@@ -52,7 +53,7 @@
         height: 84px;
         opacity: 0.7;
         font-family: DINCondensed-Bold;
-        font-size: 20px;
+        font-size: $fontsize-20;
         color: #FFFFFF;
         letter-spacing: 0;
         text-align: center;

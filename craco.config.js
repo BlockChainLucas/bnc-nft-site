@@ -2,6 +2,24 @@ const path = require("path");
 const pathResolve = (pathUrl) => path.join(__dirname, pathUrl);
 
 module.exports = {
+  style: {
+    postcss: {
+      mode: "extends",
+      loaderOptions: {
+        postcssOptions: {
+          ident: "postcss",
+          plugins: [
+            [
+              "postcss-px-to-viewport-8-plugin",
+              {
+                viewportWidth: 2112, // 设计稿的视口宽度
+              },
+            ],
+          ],
+        },
+      },
+    },
+  },
   webpack: {
     // 路径别名
     alias: {
@@ -14,7 +32,7 @@ module.exports = {
       "@pages": pathResolve("src/pages"),
       "@store": pathResolve("src/store"),
       "@utils": pathResolve("src/utils"),
-      "@sass": pathResolve("src/assets/styles"),
+      "@style": pathResolve("src/style"),
       // 此处是一个示例，实际可根据各自需求配置
     },
     // configure: (webpackConfig, { env, paths }) => {

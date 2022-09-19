@@ -1,3 +1,4 @@
+@import '@style/var.scss';
 .modal-container-logout{
   position: fixed;
   top: 0;
@@ -25,7 +26,7 @@
     }
     .modal-title{
       font-family: DINCondensed-Bold;
-      font-size: 41px;
+      font-size: $fontsize-42;
       color: #121213;
       letter-spacing: 0;
       font-weight: 700;
@@ -53,14 +54,14 @@
         .username{
           opacity: 0.5;
           font-family: DINCondensed-Bold;
-          font-size: 20px;
+          font-size: $fontsize-20;
           color: #121213;
           letter-spacing: 0;
           font-weight: 700;
         }
         .desc{
           font-family: DINCondensed-Bold;
-          font-size: 20px;
+          font-size: $fontsize-20;
           color: #121213;
           letter-spacing: 0;
           font-weight: 700;
@@ -81,7 +82,7 @@
       .io-link{
         padding: 20px 0 30px 0 ;
         font-family: DINCondensed-Bold;
-        font-size: 20px;
+        font-size:$fontsize-20;
         color: #9D3CFF;
         letter-spacing: 0;
         font-weight: 700;
@@ -94,7 +95,7 @@
         background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
         border-radius: 32px;
         font-family: DINCondensed-Bold;
-        font-size: 25px;
+        font-size: $fontsize-25;
         color: #FFFFFF;
         letter-spacing: 0;
         text-align: center;

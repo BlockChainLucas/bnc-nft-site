@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import howto_bg from "../../../../assets/howto/howto_bg.png";
-import howto_biaoqian from "../../../../assets/howto/howto_biaoqian.png";
+import howto_bg from "@assets/howto/howto_bg.png";
+import howto_biaoqian from "@assets/howto/howto_biaoqian.png";
 import "./buy.scss";
 
 const Buy: React.FC = () => {

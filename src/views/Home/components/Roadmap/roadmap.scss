@@ -1,11 +1,12 @@
+@import '@style/var.scss';
 .roadmap-container{
   height: 1965px;
   background: #060514;
   .container-main{
     .title{
       .biaoti{
-        width: 445px;
-        height: 76px;
+        width: $roadmap-title-width;
+        height: $height-76;
         margin-top: 250px;
       }
     }
@@ -38,7 +39,7 @@
           padding: 22px 60px;
           // 文字
           font-family: DINCondensed-Bold;
-          font-size: 22px;
+          font-size: $fontsize-22;
           color: #FFFFFF;
           letter-spacing: 0;
           text-align: justify;

@@ -1,10 +1,11 @@
+@import '@style/var.scss';
 .about-container{
   margin-top: -120px;
   .container-main{
     .title{
       .biaoti{
-        width: 268px;
-        height: 84px;
+        width: $about-title-width;
+        height: $height-84;
         margin-top: 303px;
       }
     }
@@ -12,7 +13,7 @@
       margin-top: 40px;
       width: 716px;
       font-family: DINCondensed-Bold;
-      font-size: 25px;
+      font-size: $fontsize-25;
       color: #FFFFFF;
       letter-spacing: 0;
       text-align: justify;

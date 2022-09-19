@@ -1,3 +1,4 @@
+@import '@style/var.scss';
 .footer-container{
   height: 200px;
   background: #060514;
@@ -14,7 +15,7 @@
       align-items: center;
       justify-content: center;
       font-family: DINCondensed-Bold;
-      font-size: 25px;
+      font-size: $fontsize-25;
       color: #FFFFFF;
       letter-spacing: 0;
       text-align: justify;

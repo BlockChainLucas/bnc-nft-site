@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import faqs_bg from "../../../../assets/faqs/faqs_bg.png";
-import faqs_biaoqian from "../../../../assets/faqs/faqs_biaoqian.png";
-import icon_up from "../../../../assets/faqs/up.png";
-import icon_down from "../../../../assets/faqs/down.png";
+import faqs_bg from "@assets/faqs/faqs_bg.png";
+import faqs_biaoqian from "@assets/faqs/faqs_biaoqian.png";
+import icon_up from "@assets/faqs/up.png";
+import icon_down from "@assets/faqs/down.png";
 import "./faqs.scss";
 const faqsList = [
   {

@@ -1,10 +1,11 @@
+@import '@style/var.scss';
 .mint-container{
   background: #060514;
   .container-main{
     .title{
       .biaoti{
-        width: 248px;
-        height: 84px;
+        width: $mint-title-width;
+        height: $height-84;
         margin-top: 170px;
       }
     }
@@ -24,7 +25,7 @@
               height: calc(100% - 14px);
               top: 0;
               font-family: DINCondensed-Bold;
-              font-size: 56px;
+              font-size: $fontsize-56;
               color: #FFFFFF;
               letter-spacing: 0;
               text-align: center;
@@ -74,7 +75,7 @@
           flex: 2;
           .amount-title{
             font-family: DINCondensed-Bold;
-            font-size: 25px;
+            font-size: $fontsize-25;
             color: #FFFFFF;
             letter-spacing: 0;
             text-align: center;
@@ -82,7 +83,7 @@
           }
           .mint-amount{
             font-family: DINCondensed-Bold;
-            font-size: 72px;
+            font-size: $fontsize-72;
             color: #FFFFFF;
             letter-spacing: 0;
             text-align: center;
@@ -96,7 +97,7 @@
             background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
             border-radius: 32px;
             font-family: DINCondensed-Bold;
-            font-size: 25px;
+            font-size: $fontsize-25;
             color: #FFFFFF;
             letter-spacing: 0;
             text-align: center;
@@ -105,7 +106,7 @@
           }
           .error{
             font-family: DINCondensed-Bold;
-            font-size: 25px;
+            font-size: $fontsize-25;
             color: #FF4141;
             letter-spacing: 0;
             text-align: center;
@@ -117,7 +118,7 @@
         .mint-now-right{
           flex: 1;
           font-family: DINCondensed-Bold;
-          font-size: 25px;
+          font-size: $fontsize-25;
           color: #FFFFFF;
           letter-spacing: 0;
           line-height: 100px;

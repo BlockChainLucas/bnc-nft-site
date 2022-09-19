@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.scss";
-import icon_discord from "../../../../assets/footer/icon_discord.png";
-import icon_twitter from "../../../../assets/footer/icon_twitter.png";
+import icon_discord from "@assets/footer/icon_discord.png";
+import icon_twitter from "@assets/footer/icon_twitter.png";
 const FAQS: React.FC = () => {
   return (
     <div className="footer-container">

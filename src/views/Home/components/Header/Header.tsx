@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Anchor } from "antd";
 import "./header.scss";
-import logo from "../../../../assets/modal/logo.png";
+import logo from "@assets/modal/logo.png";
 import { setShowLoginoutModal } from "../../../../store/actions/user";
 const { Link } = Anchor;
 const Header: React.FC = (props: any) => {
