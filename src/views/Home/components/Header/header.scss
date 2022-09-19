@@ -7,7 +7,7 @@
   z-index: 2;
   background: rgba(8,5,20,0.6);
   .header-main{
-    width: 1400px;
+    width: 1440px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
     }
     .header-center{
       display: flex;
-      flex: 3.5;
+      flex: 3.6;
       .ant-anchor{
         display: flex;
         height: 120px;
@@ -65,9 +65,8 @@
       }
     }
     .header-right-area{
-      flex: 1;
+      flex: 1.2;
       .header-right{
-        width: 199px;
         height: 64px;
         line-height: 64px;
         margin:  auto;
