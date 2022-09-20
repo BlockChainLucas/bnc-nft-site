@@ -44,4 +44,5 @@ font-family: myFirstFont;
   width: 1024px;
   left: calc(50vw - 512px);
   height: auto;
+  z-index: 2;
 }
