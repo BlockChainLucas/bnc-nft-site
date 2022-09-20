@@ -24,7 +24,6 @@
               width: calc(100% - 14px);
               height: calc(100% - 14px);
               top: 0;
-              font-family: DINCondensed-Bold;
               font-size: $fontsize-56;
               color: #FFFFFF;
               letter-spacing: 0;
@@ -74,7 +73,6 @@
           margin-top: 30px;
           flex: 2;
           .amount-title{
-            font-family: DINCondensed-Bold;
             font-size: $fontsize-25;
             color: #FFFFFF;
             letter-spacing: 0;
@@ -82,7 +80,6 @@
             font-weight: 700;
           }
           .mint-amount{
-            font-family: DINCondensed-Bold;
             font-size: $fontsize-72;
             color: #FFFFFF;
             letter-spacing: 0;
@@ -96,7 +93,6 @@
             line-height: 64px;
             background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
             border-radius: 32px;
-            font-family: DINCondensed-Bold;
             font-size: $fontsize-25;
             color: #FFFFFF;
             letter-spacing: 0;
@@ -105,7 +101,6 @@
             cursor: pointer;
           }
           .error{
-            font-family: DINCondensed-Bold;
             font-size: $fontsize-25;
             color: #FF4141;
             letter-spacing: 0;
@@ -117,7 +112,6 @@
         }
         .mint-now-right{
           flex: 1;
-          font-family: DINCondensed-Bold;
           font-size: $fontsize-25;
           color: #FFFFFF;
           letter-spacing: 0;

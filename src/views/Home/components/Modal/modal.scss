@@ -25,7 +25,6 @@
       cursor: pointer;
     }
     .modal-title{
-      font-family: DINCondensed-Bold;
       font-size: $fontsize-42;
       color: #121213;
       letter-spacing: 0;
@@ -45,14 +44,12 @@
       align-items: center;
       flex-direction: column;
       .username{
-        font-family: DINCondensed-Bold;
         font-size: $fontsize-30;
         color: #121213;
         letter-spacing: 0;
         font-weight: 700;
       }
       .desc{
-        font-family: DINCondensed-Bold;
         font-size: $fontsize-25;
         color: #ACACBF;
         letter-spacing: 0;

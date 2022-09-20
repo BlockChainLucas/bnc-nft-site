@@ -1,4 +1,14 @@
 @import '~antd/dist/antd.css';
+
+@font-face
+{
+font-family: myFirstFont;
+src: url('./style/DINNextLTPro-MediumCond.otf')   /* 注意路径*/
+}
+div
+{
+font-family: myFirstFont;
+}
 /* .App{
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   text-align: center;

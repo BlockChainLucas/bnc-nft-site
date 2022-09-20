@@ -25,7 +25,6 @@
       cursor: pointer;
     }
     .modal-title{
-      font-family: DINCondensed-Bold;
       font-size: $fontsize-42;
       color: #121213;
       letter-spacing: 0;
@@ -53,14 +52,12 @@
         flex: 1;
         .username{
           opacity: 0.5;
-          font-family: DINCondensed-Bold;
           font-size: $fontsize-20;
           color: #121213;
           letter-spacing: 0;
           font-weight: 700;
         }
         .desc{
-          font-family: DINCondensed-Bold;
           font-size: $fontsize-20;
           color: #121213;
           letter-spacing: 0;
@@ -81,7 +78,6 @@
       text-align: center;
       .io-link{
         padding: 20px 0 30px 0 ;
-        font-family: DINCondensed-Bold;
         font-size:$fontsize-20;
         color: #9D3CFF;
         letter-spacing: 0;
@@ -94,7 +90,6 @@
         margin: 0 auto;
         background-image: linear-gradient(-50deg, #4E7CFF 0%, #6460FF 41%, #AA34FF 100%);
         border-radius: 32px;
-        font-family: DINCondensed-Bold;
         font-size: $fontsize-25;
         color: #FFFFFF;
         letter-spacing: 0;

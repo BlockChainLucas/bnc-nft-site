@@ -22,7 +22,6 @@
           .item-key{
             width: 126px;
             text-align: center;
-            font-family: DINCondensed-Bold;
             font-size: $fontsize-42;
             color: #FFFFFF;
             height: 96px;
@@ -30,10 +29,12 @@
           }
           .item-title{
             flex: 1;
-            font-family: DINCondensed-Bold;
-            font-size: $fontsize-22;
-            color: #FFFFFF;
+            font-size: $fontsize-25;
             letter-spacing: 0;
+            color: #FFFFFF;
+            text-align: justify;
+            line-height: 40px;
+            font-weight: 700;
           }
           .item-icon{
             width: 100px;
@@ -44,8 +45,8 @@
           }
         }
         .item-desc{
+          margin-left: 126px;
           opacity: 0.7;
-          font-family: DINCondensed-Bold;
           font-size: $fontsize-25;
           color: #FFFFFF;
           letter-spacing: 0;

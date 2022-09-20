@@ -1,6 +1,5 @@
 @import '@style/var.scss';
 .header-container{
-  font-family: DINCondensed-Bold;
   height: $height-120;
   line-height: $height-120;
   position: sticky;
@@ -20,7 +19,6 @@
         height: 36px;
         margin-right: 16px
       }
-      font-family: DINCondensed-Bold;
       font-size: $fontsize-32;
       color: #FFFFFF;
       letter-spacing: 0;
@@ -85,7 +83,6 @@
         &.login{
           border: 1px solid rgba(255,255,255,0.3);
           border-radius: 32px;
-          font-family: DINCondensed-Bold;
           font-size: $fontsize-25;
           color: #FFFFFF;
           letter-spacing: 0;
