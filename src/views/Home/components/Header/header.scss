@@ -4,7 +4,7 @@
   line-height: $height-120;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 999;
   background: rgba(8,5,20,0.6);
   .header-main{
     width: 1440px;
