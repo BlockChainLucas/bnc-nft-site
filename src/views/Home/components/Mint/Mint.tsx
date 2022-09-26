@@ -4,7 +4,7 @@ import mint_biaoti from "@assets/mint/mint_biaoti.png";
 import "./mint.scss";
 import { ethers, Signer } from "ethers";
 import { abi } from "./contractAbi";
-import { message } from "antd";
+import { Button, message } from "antd";
 import { useSelector } from "react-redux";
 
 const mintList = [
@@ -33,52 +33,66 @@ const mintList = [
     title: "GOLD NFT",
   },
 ];
-const contractAddress="0xaC8A41d1D8b54eb3867ff6843B7164978aeE10e7";
+const contractAddress = "0xaC8A41d1D8b54eb3867ff6843B7164978aeE10e7";
 
 const Roadmap: React.FC = () => {
   const [type, setType] = useState(0);
   const [showError, setShowError] = useState(false);
-  const [mintMount,setMintMount] = useState(1);
+  // please switch to goerli chain
+  const [showSwitchError, setShowSwitchError] = useState(false);
+  const [mintMount, setMintMount] = useState(1);
   const userMsg = useSelector((state: any) => state.user);
   const address = userMsg.key;
   const chainId = userMsg?.provider?.network?.chainId;
-  const provider =userMsg?.provider;
+  const provider = userMsg?.provider;
   const signer = provider?.getSigner();
-  const contract = new ethers.Contract(contractAddress, abi, provider as ethers.providers.Provider);
+  const contract = new ethers.Contract(
+    contractAddress,
+    abi,
+    provider as ethers.providers.Provider
+  );
   const MintNow = async () => {
     isWhiteList(mintList[type]);
-    let  hasLowerNft = null;
+    let hasLowerNft = null;
     const contractWithSigner = contract.connect(signer as Signer);
     let nfts = [];
-    for(let i=0;i<type;i++){
-       hasLowerNft =  await contract.walletOfOwner(i,address).catch((err:any)=>{
-       });
-       console.log(hasLowerNft)
-       if(hasLowerNft!=undefined&&hasLowerNft[0]._hex!='0x00'){
+    for (let i = 0; i < type; i++) {
+      hasLowerNft = await contract
+        .walletOfOwner(i, address)
+        .catch((err: any) => {});
+      console.log(hasLowerNft);
+      if (hasLowerNft != undefined && hasLowerNft[0]._hex != "0x00") {
         nfts.push(hasLowerNft);
-       }
+      }
     }
     console.log(nfts);
-    if(nfts.length==0){
-      await contractWithSigner.mintWhitelist(type).catch((err:any)=>{
+    if (nfts.length == 0) {
+      await contractWithSigner.mintWhitelist(type).catch((err: any) => {
         message.error(err);
       });
-    }
-    else{
-      await contractWithSigner.upgrade(type,nfts[nfts.length-1][0]._hex).catch((err:any)=>{
-        message.error(err);
-      });;
+    } else {
+      await contractWithSigner
+        .upgrade(type, nfts[nfts.length - 1][0]._hex)
+        .catch((err: any) => {
+          message.error(err);
+        });
     }
   };
-  const isWhiteList = async (item:any)=>{
-    if(chainId!=5){
-      message.error("please switch to goerli chain")
+  const isWhiteList = async (item: any) => {
+    if (chainId != 5) {
+      setShowSwitchError(true);
+
+      // message.error("please switch to goerli chain");
     }
     setType(item.type);
-    const isInWhiteList = await contract.checkWhitelist(item.type,address);
-    setMintMount(isInWhiteList?1:0);
-    setShowError(!isInWhiteList);
-  }
+    try {
+      const isInWhiteList = await contract.checkWhitelist(item.type, address);
+      setMintMount(isInWhiteList ? 1 : 0);
+      setShowError(!isInWhiteList);
+    } catch (e) {
+      setShowError(true);
+    }
+  };
 
   return (
     <div id="mint" className="mint-container">
@@ -105,7 +119,7 @@ const Roadmap: React.FC = () => {
                   >
                     <div
                       className="mint-item-img"
-                      onClick={()=>isWhiteList(item)}
+                      onClick={() => isWhiteList(item)}
                     >
                       <img
                         src={require(`@assets/mint/${item.imgKey}.png`)}
@@ -124,11 +138,18 @@ const Roadmap: React.FC = () => {
               <div className="mint-now-left">
                 <div className="amount-title">Amount to Mint</div>
                 <div className="mint-amount">{mintMount}</div>
-                <div className="mint-button" onClick={MintNow} >
+                <div
+                  className="mint-button"
+                  onClick={MintNow}
+                  // disabled={showError || showSwitchError}
+                >
                   Mint Now
                 </div>
                 {showError && (
                   <div className="error">Wallet Address not whitelisted!</div>
+                )}
+                {showSwitchError && !showError && (
+                  <div className="error">please switch to goerli chain!</div>
                 )}
               </div>
               <div className="mint-now-right">

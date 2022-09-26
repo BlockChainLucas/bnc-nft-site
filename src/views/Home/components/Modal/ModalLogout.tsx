@@ -1,4 +1,12 @@
-import React from "react";
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: captern@icloud.com
+ * @Date: 2022-09-19 11:54:44
+ * @LastEditors: captern
+ * @LastEditTime: 2022-09-26 13:38:42
+ */
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 import copy from "copy-to-clipboard";
@@ -12,15 +20,21 @@ import icon_fuzhi from "@assets/modal/icon_fuzhi.png";
 
 import "./logout.scss";
 import { getUserInfo } from "../../../../api/user";
-import { message } from "antd";
+import { message, Spin } from "antd";
 const Modal: React.FC = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userMsg = useSelector((state: any) => state.user);
   const logout = () => {
-    getUserInfo({ id: 1 }).then((res: any) => {
-      dispatch(setUserLogout());
-      hideModal();
-    });
+    setLoading(true);
+    // getUserInfo({ id: 1 }).then((res: any) => {
+    //   dispatch(setUserLogout());
+    //   hideModal();
+    // });
+    dispatch(setUserLogout());
+    setTimeout(() => {
+      setLoading(false);
+    }, 300);
   };
 
   const hideModal = () => {
@@ -59,9 +73,11 @@ const Modal: React.FC = () => {
         </div>
         <div className="modal-bottom">
           <div className="io-link">view on etherscan.io</div>
-          <div className="logout" onClick={logout}>
-            Log out
-          </div>
+          <Spin spinning={loading}>
+            <div className="logout" onClick={logout}>
+              Log out
+            </div>
+          </Spin>
         </div>
       </div>
     </div>

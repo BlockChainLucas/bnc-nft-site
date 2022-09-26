@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: captern@icloud.com
+ * @Date: 2022-09-18 20:33:44
+ * @LastEditors: captern
+ * @LastEditTime: 2022-09-26 13:38:22
+ */
 import {
   SET_USER_MSG,
   SET_SHOW_LOGINOUT_MODAL,
@@ -18,7 +26,7 @@ export default function user(state = init_state, action: any) {
       return {
         username: null, // 用户名称
         key: null,
-        loginoutModal: null,
+        // loginoutModal: null,
       };
     case SET_SHOW_LOGINOUT_MODAL:
       return Object.assign({}, state, { loginoutModal: data });
