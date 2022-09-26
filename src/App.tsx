@@ -10,12 +10,13 @@ import React from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./router/router";
 import "./App.css";
+
 const App: React.FC = () => {
   const Views = () => useRoutes(routes);
 
   return (
     <div className="App">
-      <Views />
+       <Views />
     </div>
   );
 };

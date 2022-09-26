@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Anchor } from "antd";
 import "./header.scss";
 import logo from "@assets/modal/logo.png";
 import { setShowLoginoutModal } from "../../../../store/actions/user";
+
 const { Link } = Anchor;
 const Header: React.FC = (props: any) => {
   const userMsg = useSelector((state: any) => state.user);
   const [key, setKey] = useState(null);
+
   useEffect(() => {
     if (userMsg?.key && userMsg.key?.length) {
       const replace = userMsg.key.slice(6, userMsg.key.length - 6);
@@ -32,7 +34,7 @@ const Header: React.FC = (props: any) => {
           </Anchor>
         </div>
         <div className="header-right-area">
-          {userMsg?.key ? (
+        {userMsg?.key ? (
             <div
               className="header-right login"
               onClick={() => dispatch(setShowLoginoutModal("logout"))}

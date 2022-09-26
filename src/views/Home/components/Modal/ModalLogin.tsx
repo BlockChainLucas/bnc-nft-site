@@ -4,19 +4,29 @@ import {
   setUserMsg,
   setShowLoginoutModal,
 } from "../../../../store/actions/user";
+import { message } from "antd";
 import icon_guanbi from "@assets/modal/icon_guanbi.png";
 import icon_MrtaMask from "@assets/modal/icon_MrtaMask.png";
-
 import "./modal.scss";
 import { getUserInfo } from "../../../../api/user";
+import { ethers } from "ethers";
+
 const Modal: React.FC = () => {
   const dispatch = useDispatch();
-  const getUserinfoFun = () => {
+  const getUserinfoFun = async () => {
+    let provider:any = null;
+    if(window.ethereum){
+       provider = new ethers.providers.Web3Provider(window.ethereum as ethers.providers.ExternalProvider);
+      await provider.send("eth_requestAccounts", []);
+    }
+    else{
+      message.error("Please download metamask.")
+    }
     getUserInfo({ id: 1 }).then((res: any) => {
       dispatch(
         setUserMsg({
-          username: "captern",
-          key: "asdcnkcnksancknsakjcnkjsdnckjsnajkn",
+          key: provider?.provider?.selectedAddress,
+          provider: provider
         })
       );
       hideModal();
@@ -38,11 +48,11 @@ const Modal: React.FC = () => {
           onClick={hideModal}
         />
         <div className="modal-title">Connect a wallet</div>
-        <div className="modal-main">
+        <div className="modal-main" onClick={getUserinfoFun}>
           <img className="avatar" src={icon_MrtaMask} alt="" />
           <div className="username">Metamask</div>
-          <div className="desc" onClick={getUserinfoFun}>
-            Connect to your MetaMask Waller
+          <div className="desc" >
+            Connect to your MetaMask Wallet.
           </div>
         </div>
       </div>

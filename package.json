@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.6",
     "antd": "^4.21.7",
     "copy-to-clipboard": "^3.3.2",
+    "ethers": "^5.7.1",
     "postcss-px-to-viewport-8-plugin": "^1.1.5",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",

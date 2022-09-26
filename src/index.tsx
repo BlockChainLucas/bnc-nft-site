@@ -15,6 +15,7 @@ import { store, persistor } from "./store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
+import { ethers } from "ethers";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,6 +26,9 @@ const root = ReactDOM.createRoot(
 //     <App />
 //   </React.StrictMode>
 // );
+declare interface Window {
+  ethereum: ethers.providers.ExternalProvider
+}
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
