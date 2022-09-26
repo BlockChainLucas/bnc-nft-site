@@ -27,12 +27,12 @@ const root = ReactDOM.createRoot(
 //   </React.StrictMode>
 // );
 declare interface Window {
-  ethereum: ethers.providers.ExternalProvider
+  ethereum: ethers.providers.ExternalProvider;
 }
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="/test">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </PersistGate>
