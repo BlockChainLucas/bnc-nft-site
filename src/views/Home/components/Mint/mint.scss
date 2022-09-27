@@ -72,6 +72,10 @@
         .mint-now-left{
           margin-top: 30px;
           flex: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           .amount-title{
             font-size: $fontsize-25;
             color: #FFFFFF;
@@ -98,7 +102,11 @@
             letter-spacing: 0;
             text-align: center;
             font-weight: 700;
+            border: 0px;
             cursor: pointer;
+            &:disabled{
+              background-image: linear-gradient(-50deg, #808080 0%, #808080 41%, #808080 100%);
+            }
           }
           .error{
             font-size: $fontsize-25;

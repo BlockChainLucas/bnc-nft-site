@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import mint_bg from "@assets/mint/mint_bg.png";
 import mint_biaoti from "@assets/mint/mint_biaoti.png";
 import "./mint.scss";
 import { ethers, Signer } from "ethers";
 import { abi } from "./contractAbi";
 import { Button, message } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserMsg } from "../../../../store/actions/user";
 
 const mintList = [
   {
@@ -33,62 +34,106 @@ const mintList = [
     title: "GOLD NFT",
   },
 ];
-const contractAddress = "0xaC8A41d1D8b54eb3867ff6843B7164978aeE10e7";
+const contractAddress = "0x47b94CFAEc2c728866793a452ADD9270ebedE2B2";
 
 const Roadmap: React.FC = () => {
   const [type, setType] = useState(0);
-  const [showError, setShowError] = useState(false);
-  // please switch to goerli chain
-  const [showSwitchError, setShowSwitchError] = useState(false);
-  const [mintMount, setMintMount] = useState(1);
+  const [showError, setShowError] = useState(true);
+  const [mintMount, setMintMount] = useState(0);
+  const [mintType, setMintType] = useState('Mint Now');
+  const [isLoading, setIsLoading] = useState(true);
   const userMsg = useSelector((state: any) => state.user);
   const address = userMsg.key;
-  const chainId = userMsg?.provider?.network?.chainId;
-  const provider = userMsg?.provider;
+  const [showSwitchError, setShowSwitchError] = useState(false);
+  let provider = userMsg?.provider;
   const signer = provider?.getSigner();
+  const dispatch = useDispatch();
   const contract = new ethers.Contract(
     contractAddress,
     abi,
     provider as ethers.providers.Provider
   );
+  //判断网络是否正确
+  const isTrueNetwork = async ()=>{
+    const chainId = userMsg?.provider?.network?.chainId;
+    if(chainId!=5){
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x5' }],
+      }).then(()=>setShowSwitchError(false)).catch(()=>setShowSwitchError(true));    
+    }
+  }
+  isTrueNetwork();
+  //监听账号切换
+  window?.ethereum?.on("accountsChanged", async () => {
+    provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    dispatch(
+      setUserMsg({
+        key: provider?.provider?.selectedAddress,
+        provider: provider,
+      })
+    );
+  });
+  //监听网络切换
+  window?.ethereum?.on("chainChanged", async (chainId:number) => {
+    if (chainId!==5) {
+      setShowSwitchError(true);
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x5' }],
+      }).then(()=>setShowSwitchError(false)).catch(()=>setShowSwitchError(true));
+    }
+    else{
+      setShowSwitchError(false);
+    }
+  });
+
   const MintNow = async () => {
     isWhiteList(mintList[type]);
-    let hasLowerNft = null;
     const contractWithSigner = contract.connect(signer as Signer);
+    const nfts = await getMintTypeAndResults();
+    if (nfts.length === 0) {
+      const tx = await contractWithSigner.mintWhitelist(type)
+      setIsLoading(true);
+      await tx.wait();
+      setIsLoading(false);
+    } else {
+      const tx = await contractWithSigner
+        .upgrade(type, nfts[nfts.length - 1][0]._hex)
+        setIsLoading(true);
+        await tx.wait()
+        setIsLoading(false);
+    }
+  };
+  const getMintTypeAndResults = async()=>{
+    let hasLowerNft = null;
     let nfts = [];
     for (let i = 0; i < type; i++) {
       hasLowerNft = await contract
         .walletOfOwner(i, address)
         .catch((err: any) => {});
-      console.log(hasLowerNft);
-      if (hasLowerNft != undefined && hasLowerNft[0]._hex != "0x00") {
+      if (hasLowerNft !== undefined && hasLowerNft[0]._hex !== "0x00") {
         nfts.push(hasLowerNft);
       }
     }
-    console.log(nfts);
-    if (nfts.length == 0) {
-      await contractWithSigner.mintWhitelist(type).catch((err: any) => {
-        message.error(err);
-      });
-    } else {
-      await contractWithSigner
-        .upgrade(type, nfts[nfts.length - 1][0]._hex)
-        .catch((err: any) => {
-          message.error(err);
-        });
-    }
-  };
+    return nfts;
+  }
   const isWhiteList = async (item: any) => {
-    if (chainId != 5) {
-      setShowSwitchError(true);
-
-      // message.error("please switch to goerli chain");
-    }
     setType(item.type);
+    setIsLoading(false);
     try {
       const isInWhiteList = await contract.checkWhitelist(item.type, address);
       setMintMount(isInWhiteList ? 1 : 0);
       setShowError(!isInWhiteList);
+      if(isInWhiteList){
+        const results = await getMintTypeAndResults();
+        if(results.length===0){
+          setMintType('Mint Now');
+        }
+        else{
+          setMintType('Upgrade Now')
+        }
+      }
     } catch (e) {
       setShowError(true);
     }
@@ -138,17 +183,18 @@ const Roadmap: React.FC = () => {
               <div className="mint-now-left">
                 <div className="amount-title">Amount to Mint</div>
                 <div className="mint-amount">{mintMount}</div>
-                <div
+                <Button
                   className="mint-button"
                   onClick={MintNow}
-                  // disabled={showError || showSwitchError}
+                  disabled={showError || showSwitchError}
+                  loading={isLoading}
                 >
-                  Mint Now
-                </div>
+                  {mintType}
+                </Button>
                 {showError && (
                   <div className="error">Wallet Address not whitelisted!</div>
                 )}
-                {showSwitchError && !showError && (
+                {showSwitchError && (
                   <div className="error">please switch to goerli chain!</div>
                 )}
               </div>

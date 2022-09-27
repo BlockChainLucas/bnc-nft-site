@@ -12,6 +12,7 @@ import ModalLogout from "./components/Modal/ModalLogout";
 
 const Home: React.FC = () => {
   const userMsg = useSelector((state: any) => state.user);
+  
   return (
     <div>
       <Header />

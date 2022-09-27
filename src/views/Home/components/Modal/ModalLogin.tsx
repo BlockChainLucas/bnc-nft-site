@@ -26,9 +26,7 @@ const Modal: React.FC = () => {
     let provider: any = null;
     setLoading(true);
     if (window.ethereum) {
-      provider = new ethers.providers.Web3Provider(
-        window.ethereum as ethers.providers.ExternalProvider
-      );
+      provider = new ethers.providers.Web3Provider(window.ethereum, "any");
       await provider.send("eth_requestAccounts", []);
     } else {
       message.error("Please download metamask.");
