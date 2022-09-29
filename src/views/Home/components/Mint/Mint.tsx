@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import mint_bg from "@assets/mint/mint_bg.png";
 import mint_biaoti from "@assets/mint/mint_biaoti.png";
 import "./mint.scss";
 import { ethers, Signer } from "ethers";
 import { abi } from "./contractAbi";
-import { Button, message } from "antd";
+import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserMsg } from "../../../../store/actions/user";
 
@@ -34,14 +34,14 @@ const mintList = [
     title: "GOLD NFT",
   },
 ];
-const contractAddress = "0x47b94CFAEc2c728866793a452ADD9270ebedE2B2";
-
+const contractAddress = "0xbb071A7D660dFf095236928101e0163418ca0C73";
+ 
 const Roadmap: React.FC = () => {
   const [type, setType] = useState(0);
   const [showError, setShowError] = useState(true);
   const [mintMount, setMintMount] = useState(0);
   const [mintType, setMintType] = useState('Mint Now');
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const userMsg = useSelector((state: any) => state.user);
   const address = userMsg.key;
   const [showSwitchError, setShowSwitchError] = useState(false);
@@ -53,13 +53,14 @@ const Roadmap: React.FC = () => {
     abi,
     provider as ethers.providers.Provider
   );
+  
   //判断网络是否正确
   const isTrueNetwork = async ()=>{
     const chainId = userMsg?.provider?.network?.chainId;
-    if(chainId!=5){
+    if(chainId!=1){
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
+        params: [{ chainId: '0x1' }],
       }).then(()=>setShowSwitchError(false)).catch(()=>setShowSwitchError(true));    
     }
   }
@@ -76,11 +77,11 @@ const Roadmap: React.FC = () => {
   });
   //监听网络切换
   window?.ethereum?.on("chainChanged", async (chainId:number) => {
-    if (chainId!==5) {
+    if (chainId!==1) {
       setShowSwitchError(true);
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
+        params: [{ chainId: '0x1' }],
       }).then(()=>setShowSwitchError(false)).catch(()=>setShowSwitchError(true));
     }
     else{
@@ -91,7 +92,7 @@ const Roadmap: React.FC = () => {
   const MintNow = async () => {
     isWhiteList(mintList[type]);
     const contractWithSigner = contract.connect(signer as Signer);
-    const nfts = await getMintTypeAndResults();
+    const nfts = await getMintTypeAndResults(type);
     if (nfts.length === 0) {
       const tx = await contractWithSigner.mintWhitelist(type)
       setIsLoading(true);
@@ -104,8 +105,9 @@ const Roadmap: React.FC = () => {
         await tx.wait()
         setIsLoading(false);
     }
+    isWhiteList(mintList[type])
   };
-  const getMintTypeAndResults = async()=>{
+  const getMintTypeAndResults = async(type:number)=>{
     let hasLowerNft = null;
     let nfts = [];
     for (let i = 0; i < type; i++) {
@@ -125,14 +127,13 @@ const Roadmap: React.FC = () => {
       const isInWhiteList = await contract.checkWhitelist(item.type, address);
       setMintMount(isInWhiteList ? 1 : 0);
       setShowError(!isInWhiteList);
-      if(isInWhiteList){
-        const results = await getMintTypeAndResults();
-        if(results.length===0){
-          setMintType('Mint Now');
-        }
-        else{
-          setMintType('Upgrade Now')
-        }
+      const results = await getMintTypeAndResults(item.type);
+      console.log(results);
+      if(results.length===0){
+        setMintType('Mint Now');
+      }
+      else{
+        setMintType('Upgrade Now')
       }
     } catch (e) {
       setShowError(true);
@@ -195,7 +196,7 @@ const Roadmap: React.FC = () => {
                   <div className="error">Wallet Address not whitelisted!</div>
                 )}
                 {showSwitchError && (
-                  <div className="error">please switch to goerli chain!</div>
+                  <div className="error">Please switch to Ethereum Mainnet!</div>
                 )}
               </div>
               <div className="mint-now-right">
