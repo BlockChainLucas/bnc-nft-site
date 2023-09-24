@@ -7,11 +7,15 @@ const FAQS: React.FC = () => {
     <div className="footer-container">
       <div className="links">
         <div className="link-item">
-          <img src={icon_discord} alt="" />
+          <a href="https://discord.gg/ygQNAZyvcK">
+            <img src={icon_discord} alt="" />
+          </a>
           <span>Discord</span>
         </div>
         <div className="link-item">
-          <img src={icon_twitter} alt="" />
+          <a href="https://twitter.com/BNC_Web3">
+            <img src={icon_twitter} alt="" />
+          </a>
           <span>Twitter</span>
         </div>
       </div>
